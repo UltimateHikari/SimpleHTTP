@@ -49,6 +49,10 @@ public class SimpleHTTP implements Runnable{
 					
 					setMIME();
 					
+					if(filename.equals("/")) {
+						filename = "/index.html";
+					}
+					
 					File file = new File("."  + filename);
 					FileInputStream fin = new FileInputStream(file);
 					byte [] readFile = fin.readAllBytes();
@@ -95,7 +99,7 @@ public class SimpleHTTP implements Runnable{
 			category = "image";
 			type = "jpeg";
 		}
-		if(filename.endsWith(".htm") || filename.endsWith(".html")) {
+		if(filename.endsWith(".htm") || filename.endsWith(".html") || filename.equals("/")) {
 			category = "text";
 			type = "html";
 		}
